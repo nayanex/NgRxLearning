@@ -633,3 +633,27 @@ Here, we highlighted the `condition` variable, which is a Boolean. There can be 
 switch the implementation. One good case is when the endpoint don't exist yet and we want to ensure it calls our `FakeService`
 instead. Another reason could be that we are in testing mode and by just changing this one variable we can make all our services
 rely on a fake version of themselves.
+
+## Overriding constants
+
+Not everything, though, is a class that needs to be resolved; sometimes it is a constant.
+For those cases, instead of using `useClass`, we can use `useValue`, like so:
+
+`providers: [ { provide: 'a-string-token', useValue: 12345678 } ]`
+
+This is not really a class type, so you can't write this in a constructor:
+
+`constructor(a-string-token) . // will not compile`
+
+That wouldn't compile. What we can do instead is to use the `@Inject` decorator in the following way:
+
+```typescript
+constructor( @Inject('a-string-token') token) // token will have value
+12345678
+```
+
+The `useValue` is no different from `useClass` when it comes to how to override it.
+The difference is of course that we need to type `useValue` in our instruction to override rather than `useClass`.
+
+## Resolving your dependencies with @Injectable
+
