@@ -657,3 +657,18 @@ The difference is of course that we need to type `useValue` in our instruction t
 
 ## Resolving your dependencies with @Injectable
 
+`@Injectable` is not strictly mandatory to use for services in general. However, if that service has dependencies, then it needs to be used. Failure to decorate a service with `@Injectable` that has dependencies leads to an error where the compiler complains that it doesn't know how to construct the mentioned service. Let's look at a case where we need to use the `@Injectable` decorator:
+
+```typescript
+import { Injectable } from "@angular/core";
+@Injectable()
+export class Service {
+  constructor(logger: Logger) {}
+}
+```
+
+In this case, Angular's DI machinery will look up `Logger` and inject it into the `Service` constructor. So, providing we have done this:
+
+`providers: [Service, Logger]`
+
+In a component or module, it should work. Remember, when in doubt, add `@Injectable` to your service if it has dependencies in the constructor or will have in the near future. If your service lacks the `@Injectable` keyword and you try to inject it into a component's constructor, then it will throw an error and your component will not be created.
