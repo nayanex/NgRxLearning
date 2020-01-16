@@ -672,3 +672,5 @@ In this case, Angular's DI machinery will look up `Logger` and inject it into th
 `providers: [Service, Logger]`
 
 In a component or module, it should work. Remember, when in doubt, add `@Injectable` to your service if it has dependencies in the constructor or will have in the near future. If your service lacks the `@Injectable` keyword and you try to inject it into a component's constructor, then it will throw an error and your component will not be created.
+
+# Fetching and persisting data with HTTP – introducing services with Observables
