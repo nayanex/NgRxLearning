@@ -673,4 +673,6 @@ In this case, Angular's DI machinery will look up `Logger` and inject it into th
 
 In a component or module, it should work. Remember, when in doubt, add `@Injectable` to your service if it has dependencies in the constructor or will have in the near future. If your service lacks the `@Injectable` keyword and you try to inject it into a component's constructor, then it will throw an error and your component will not be created.
 
-# Fetching and persisting data with HTTP – introducing services with Observables
+# Fetching and persisting data with HTTP – Introducing services with Observables
+
+So far, we have gone through a data flow where the component is our view to the outside world, but also the controller. The component uses a service to get the data, but also to persist it. The data, however, has up until this point lived in the service and that's not a very likely place for it to reside. Almost certainly, that data should be fetched and persisted to an endpoint. That endpoint is an exposed URL to a backend system published somewhere on the internet. We can use HTTP to reach said endpoint. Angular has created a wrapper on top of the vanilla way of fetching data through HTTP. The wrapper is a class that wraps the functionality of an object called XmlHttpRequest. The Angular wrapper class is called the HttpClient service.
