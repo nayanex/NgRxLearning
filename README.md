@@ -675,4 +675,4 @@ In a component or module, it should work. Remember, when in doubt, add `@Injecta
 
 # Fetching and persisting data with HTTP – Introducing services with Observables
 
-So far, we have gone through a data flow where the component is our view to the outside world, but also the controller. The component uses a service to get the data, but also to persist it. The data, however, has up until this point lived in the service and that's not a very likely place for it to reside. Almost certainly, that data should be fetched and persisted to an endpoint. T
+
